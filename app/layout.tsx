@@ -4,26 +4,35 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/context/AuthContext"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mental Health Sentiment Analysis System",
-  description: "AI-powered mental health sentiment analysis using NLP and machine learning",
-    generator: 'v0.app'
+  title: "MindSense AI — Mental Health Sentiment Analysis Platform",
+  description:
+    "AI-powered mental health sentiment analysis platform using advanced NLP and machine learning. Detect emotions, assess mental health risk, and gain personalized insights.",
+  keywords:
+    "mental health, sentiment analysis, NLP, AI, emotion detection, depression, anxiety, wellness",
+  authors: [{ name: "MindSense AI" }],
+  openGraph: {
+    title: "MindSense AI — Mental Health Sentiment Analysis",
+    description: "Advanced AI-powered emotional intelligence and mental health assessment platform.",
+    type: "website",
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <Navbar />
-          <main>{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <AuthProvider>
+            <Navbar />
+            <main>{children}</main>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

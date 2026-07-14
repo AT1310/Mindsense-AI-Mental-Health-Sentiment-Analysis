@@ -56,7 +56,10 @@ export async function POST(request: Request) {
     }
 
     // Calculate score
-    const score = Object.values(answers).reduce((sum, value) => sum + Number.parseInt(value as string, 10), 0)
+    const score = (Object.values(answers) as (string | number)[]).reduce(
+      (sum: number, value) => sum + (typeof value === "number" ? value : parseInt(String(value), 10)),
+      0
+    )
 
     // Interpret score based on survey type
     let result

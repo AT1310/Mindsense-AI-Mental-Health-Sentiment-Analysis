@@ -1,138 +1,114 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Brain, Github, Linkedin, Twitter, Zap, BarChart3, ClipboardList, ShieldCheck } from "lucide-react"
+
+const navLinks = [
+  { label: "Analyze", href: "/analyze", icon: Zap },
+  { label: "Dashboard", href: "/dashboard", icon: BarChart3 },
+  { label: "Profile", href: "/profile", icon: ClipboardList },
+  { label: "Admin", href: "/admin", icon: ShieldCheck },
+]
+
+const landingLinks = [
+  { label: "About", href: "/#about" },
+  { label: "Features", href: "/#features" },
+  { label: "Architecture", href: "/#architecture" },
+  { label: "Demo", href: "/#demo" },
+  { label: "Contact", href: "/#contact" },
+]
+
+const resources = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "HIPAA Compliance", href: "/hipaa-compliance" },
+  { label: "API Reference", href: "/api-reference" },
+  { label: "Research Papers", href: "/research" },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-muted/30 border-t">
+    <footer className="border-t border-border/50 bg-card/30 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-primary">MindSense</span>
-              <span className="ml-1 text-xl font-bold">AI</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand */}
+          <div>
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                <Brain className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="text-base font-bold gradient-text font-display">MindSense AI</span>
+              </div>
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Advanced mental health sentiment analysis using AI and machine learning to improve mental wellness
-              monitoring and care.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+              Advanced AI-powered mental health sentiment analysis platform for emotional intelligence and wellness monitoring.
             </p>
-            <div className="flex space-x-4 mt-6">
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="Twitter">
-                  <Twitter className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="LinkedIn">
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="GitHub">
-                  <Github className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="Facebook">
-                  <Facebook className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="Instagram">
-                  <Instagram className="h-5 w-5" />
-                </Link>
-              </Button>
+            <div className="flex gap-2">
+              {[
+                { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+                { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+                { icon: Github, label: "GitHub", href: "https://github.com" },
+              ].map((s) => (
+                <Button key={s.label} variant="ghost" size="icon" className="w-8 h-8 text-muted-foreground hover:text-primary" asChild>
+                  <Link href={s.href} aria-label={s.label}>
+                    <s.icon className="w-4 h-4" />
+                  </Link>
+                </Button>
+              ))}
             </div>
           </div>
 
-          <div className="md:col-span-1">
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#home" className="text-muted-foreground hover:text-primary transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="#features" className="text-muted-foreground hover:text-primary transition-colors">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#demo" className="text-muted-foreground hover:text-primary transition-colors">
-                  Demo
-                </Link>
-              </li>
-              <li>
-                <Link href="#surveys" className="text-muted-foreground hover:text-primary transition-colors">
-                  Surveys
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
+          {/* Platform */}
+          <div>
+            <h3 className="text-sm font-bold font-display mb-4">Platform</h3>
+            <ul className="space-y-2.5">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                    <link.icon className="w-3.5 h-3.5" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="md:col-span-1">
-            <h3 className="font-semibold text-lg mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  API Reference
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Research Papers
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
+          {/* Landing */}
+          <div>
+            <h3 className="text-sm font-bold font-display mb-4">Resources</h3>
+            <ul className="space-y-2.5">
+              {[...landingLinks, ...resources.slice(0, 2)].map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="md:col-span-1">
-            <h3 className="font-semibold text-lg mb-4">Subscribe</h3>
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-sm font-bold font-display mb-4">Stay Updated</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Stay updated with the latest developments in mental health technology.
+              Get the latest on mental health AI research and platform updates.
             </p>
-            <div className="flex space-x-2">
-              <Input type="email" placeholder="Your email" className="max-w-[220px]" />
-              <Button>Subscribe</Button>
+            <div className="flex gap-2">
+              <Input type="email" placeholder="your@email.com" className="h-9 text-sm flex-1" />
+              <Button size="sm" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-0">
+                Subscribe
+              </Button>
             </div>
           </div>
         </div>
 
-        <div className="border-t mt-12 pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} MindSense AI. All rights reserved. Mental Health Sentiment Analysis System.
+        <div className="border-t border-border/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} MindSense AI. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Not a substitute for professional medical advice. For emergencies, call your local crisis line.
           </p>
         </div>
       </div>

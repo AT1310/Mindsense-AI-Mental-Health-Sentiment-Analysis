@@ -1,86 +1,90 @@
-import { Brain, HeartPulse, LineChart } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Brain, HeartPulse, LineChart, ShieldCheck, Clock } from "lucide-react"
+
+const cards = [
+  {
+    icon: Brain,
+    title: "NLP & Machine Learning",
+    description:
+      "State-of-the-art ensemble models including BERT, RoBERTa, DistilBERT, and SVM analyze text across 8 emotional dimensions with high confidence.",
+    gradient: "from-indigo-500/10 to-purple-500/5",
+    iconGradient: "from-indigo-500 to-purple-600",
+    border: "border-indigo-500/20",
+  },
+  {
+    icon: HeartPulse,
+    title: "Actionable Intelligence",
+    description:
+      "Transforms raw text analysis into meaningful, context-aware suggestions, highlighting specific areas for emotional and mental well-being improvement.",
+    gradient: "from-pink-500/10 to-rose-500/5",
+    iconGradient: "from-pink-500 to-rose-600",
+    border: "border-pink-500/20",
+  },
+  {
+    icon: LineChart,
+    title: "Continuous Monitoring",
+    description:
+      "Track mental health trends over time with interactive visualizations, enabling proactive intervention and data-driven wellness strategies.",
+    gradient: "from-emerald-500/10 to-teal-500/5",
+    iconGradient: "from-emerald-500 to-teal-600",
+    border: "border-emerald-500/20",
+  },
+]
+
+const reasons = [
+  { icon: ShieldCheck, text: "Privacy-first — your data never leaves your device" },
+  { icon: Brain, text: "8 emotion categories with sentence-level granularity" },
+  { icon: HeartPulse, text: "Context-aware AI-driven actionable suggestions" },
+  { icon: Clock, text: "Analysis results in under 2 seconds" },
+  { icon: LineChart, text: "Persistent history and trend analytics dashboard" },
+  { icon: ShieldCheck, text: "GDPR-friendly design with zero third-party tracking" },
+]
 
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Understanding Mental Health Through AI</h2>
-          <p className="text-lg text-muted-foreground">
-            Our system applies advanced sentiment analysis to mental wellness, providing valuable insights for early
-            intervention and continuous monitoring.
+    <section id="about" className="py-24 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+            About the Platform
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
+            Understanding Mental Health{" "}
+            <span className="gradient-text">Through AI</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Our system applies advanced sentiment analysis to mental wellness, providing valuable insights
+            for early intervention and continuous monitoring.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <Card>
-            <CardHeader className="pb-2">
-              <Brain className="h-12 w-12 text-primary mb-4" />
-              <CardTitle>NLP & Machine Learning</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-base">
-                We use state-of-the-art natural language processing and machine learning models (Naive Bayes, SVM, BERT,
-                GPT) to analyze text and identify mental health indicators.
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <HeartPulse className="h-12 w-12 text-primary mb-4" />
-              <CardTitle>Clinical Relevance</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-base">
-                Our system integrates validated clinical screening tools like PHQ-9 and GAD-7 to provide comprehensive
-                mental health assessments aligned with medical standards.
-              </CardDescription>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <LineChart className="h-12 w-12 text-primary mb-4" />
-              <CardTitle>Continuous Monitoring</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-base">
-                Track mental health trends over time with our visualization tools, enabling proactive intervention and
-                personalized care strategies.
-              </CardDescription>
-            </CardContent>
-          </Card>
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {cards.map((card) => (
+            <div
+              key={card.title}
+              className={`relative rounded-2xl p-6 bg-gradient-to-br ${card.gradient} border ${card.border} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl backdrop-blur-sm group`}
+            >
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.iconGradient} flex items-center justify-center shadow-lg mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                <card.icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold font-display mb-3">{card.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-16 bg-card border rounded-xl p-6 md:p-8 shadow-sm">
-          <h3 className="text-2xl font-bold mb-4">Why Sentiment Analysis Matters in Mental Health</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-muted-foreground mb-4">
-                Language patterns and emotional expressions in text can reveal important indicators of mental health
-                conditions before they become severe. By analyzing these patterns, our system can:
-              </p>
-              <ul className="space-y-2 list-disc pl-5">
-                <li>Detect early signs of depression, anxiety, and stress</li>
-                <li>Monitor response to treatment and interventions</li>
-                <li>Provide objective data to complement clinical assessments</li>
-                <li>Enable remote monitoring for telehealth applications</li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-muted-foreground mb-4">
-                In clinical settings, our technology serves as a valuable supplementary tool that can:
-              </p>
-              <ul className="space-y-2 list-disc pl-5">
-                <li>Support healthcare providers with data-driven insights</li>
-                <li>Reduce the burden of manual screening and assessment</li>
-                <li>Improve access to mental health resources</li>
-                <li>Facilitate earlier intervention and potentially better outcomes</li>
-                <li>Bridge gaps between appointments with continuous monitoring</li>
-              </ul>
-            </div>
+        {/* Why it matters */}
+        <div className="rounded-2xl border border-border/50 bg-card/50 p-8 backdrop-blur-sm">
+          <h3 className="text-2xl font-bold font-display mb-6">Why It Matters</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {reasons.map((r) => (
+              <div key={r.text} className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <r.icon className="w-4 h-4 text-primary" />
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import About from "@/components/about"
 import Features from "@/components/features"
 import Architecture from "@/components/architecture"
 import Demo from "@/components/demo"
-import Surveys from "@/components/surveys"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 
@@ -15,7 +14,6 @@ export default function Home() {
       <Features />
       <Architecture />
       <Demo />
-      <Surveys />
       <Contact />
       <Footer />
     </div>
