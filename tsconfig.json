@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "target": "ES6",
     "skipLibCheck": true,
@@ -19,9 +23,45 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./frontend/components/*"
+      ],
+      "@/context/*": [
+        "./frontend/context/*"
+      ],
+      "@/models/*": [
+        "./database/models/*"
+      ],
+      "@/lib/db": [
+        "./database/db.ts"
+      ],
+      "@/lib/ai": [
+        "./backend/lib/ai.ts"
+      ],
+      "@/lib/analyzer": [
+        "./backend/lib/analyzer.ts"
+      ],
+      "@/lib/auth": [
+        "./backend/lib/auth.ts"
+      ],
+      "@/lib/email": [
+        "./backend/lib/email.ts"
+      ],
+      "@/lib/storage": [
+        "./backend/lib/storage.ts"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
