@@ -49,6 +49,50 @@ The **Mental Health Sentiment Analysis System** is an AI-powered web application
 
 ---
 
+## 📂 Project Structure
+
+This project uses a monorepo structure:
+- `frontend/`: Contains the Next.js full-stack application (React, Tailwind CSS, App Router, database models, and API endpoints).
+- *(Additional microservices or backend services will be organized at the root level as the project scales).*
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js** (v18 or higher)
+- **npm** or **pnpm**
+- **MongoDB** (local or Atlas cluster)
+
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AT1310/Mindsense-AI-Mental-Health-Sentiment-Analysis.git
+   cd Mindsense-AI-Mental-Health-Sentiment-Analysis
+   ```
+
+2. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Environment Variables:**
+   Create a `.env` file in the `frontend/` directory with your specific credentials (e.g., `MONGODB_URI`, `JWT_SECRET`).
+
+5. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
 ## 🔍 How It Works
 
 1. **Input Options**:
