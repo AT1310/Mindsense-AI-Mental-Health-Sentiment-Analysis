@@ -27,31 +27,31 @@
         "./*"
       ],
       "@/components/*": [
-        "./frontend/components/*"
+        "./components/*"
       ],
       "@/context/*": [
-        "./frontend/context/*"
+        "./context/*"
       ],
       "@/models/*": [
-        "./database/models/*"
+        "../database/models/*"
       ],
       "@/lib/db": [
-        "./database/db.ts"
+        "../database/db.ts"
       ],
       "@/lib/ai": [
-        "./backend/lib/ai.ts"
+        "../backend/lib/ai.ts"
       ],
       "@/lib/analyzer": [
-        "./backend/lib/analyzer.ts"
+        "../backend/lib/analyzer.ts"
       ],
       "@/lib/auth": [
-        "./backend/lib/auth.ts"
+        "../backend/lib/auth.ts"
       ],
       "@/lib/email": [
-        "./backend/lib/email.ts"
+        "../backend/lib/email.ts"
       ],
       "@/lib/storage": [
-        "./backend/lib/storage.ts"
+        "../backend/lib/storage.ts"
       ]
     }
   },
